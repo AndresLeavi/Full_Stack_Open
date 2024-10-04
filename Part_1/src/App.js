@@ -1,4 +1,5 @@
 import React from 'react'
+import { Part1, Part2, Part3 } from './Content/Parts'
 
 export const Header = (props) => {
   // console.log(props.name)
@@ -13,9 +14,9 @@ export const Header = (props) => {
 export const Content = (parts) => {
   return(
     <div>
-      <p>{parts.part1}</p>
-      <p>{parts.part2}</p>
-      <p>{parts.part3}</p>
+      <Part1 name={parts.part1}/>
+      <Part2 name={parts.part2}/>
+      <Part3 name={parts.part3}/>
     </div>
   )
 }
