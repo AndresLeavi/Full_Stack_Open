@@ -1,26 +1,26 @@
 
-export const Part1= (props) => {
+export const Part1= ({name, number}) => {
 
 
     return(
         <div>
-            <p>{props.name} - Exercises {props.number}</p>           
+            <p>{name} - Exercises {number}</p>           
         </div>
     )
 }
-export const Part2= (props) => {
+export const Part2= ({name, number}) => {
 
     return(
         <div>
-            <p>{props.name} - Exercises  {props.number}</p>           
+            <p>{name} - Exercises  {number}</p>           
         </div>
     )
 }
-export const Part3= (props) => {
+export const Part3= ({name, number}) => {
 
     return(
         <div>
-            <p>{props.name} - Exercises  {props.number} </p>           
+            <p>{name} - Exercises  {number} </p>           
         </div>
     )
 }

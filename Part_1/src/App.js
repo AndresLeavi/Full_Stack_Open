@@ -143,6 +143,36 @@ import { Part1, Part2, Part3 } from './Content/Parts'
 
 //Excercise 1.5
 
+// export const Header = (props) => {
+export const Header = ({name}) => {
+// console.log(props.name)
+  return(
+    <div>
+      <h1>{name}</h1>
+    </div>
+  )
+}
+
+
+export const Content = (parts) => {
+ 
+  return(
+    <div>
+      <Part1 name={parts.parts[0].name} number = {parts.parts[0].exercises}/>
+      <Part2 name={parts.parts[1].name} number = {parts.parts[1].exercises}/>
+      <Part3 name={parts.parts[2].name} number = {parts.parts[2].exercises}/>
+    </div>
+  )
+}
+
+export const Total = (parts) => {
+  return(
+    <div>
+      <h4> Number of exercises {parts.parts[0].exercises + parts.parts[1].exercises + parts.parts[2].exercises}</h4>
+    </div>
+  )  
+}
+
 export const App = () => {
   const course = {
     name: 'Half Stack application development',
@@ -176,33 +206,5 @@ export const App = () => {
 
 export default App
 
-export const Header = (props) => {
-  // console.log(props.name)
-  return(
-    <div>
-      <h1>{props.name}</h1>
-    </div>
-  )
-}
-
-
-export const Content = (parts) => {
- 
-  return(
-    <div>
-      <Part1 name={parts.parts[0].name} number = {parts.parts[0].exercises}/>
-      <Part2 name={parts.parts[1].name} number = {parts.parts[1].exercises}/>
-      <Part3 name={parts.parts[2].name} number = {parts.parts[2].exercises}/>
-    </div>
-  )
-}
-
-export const Total = (parts) => {
-  return(
-    <div>
-      <h4> Number of exercises {parts.parts[0].exercises + parts.parts[1].exercises + parts.parts[2].exercises}</h4>
-    </div>
-  )  
-}
 
 
