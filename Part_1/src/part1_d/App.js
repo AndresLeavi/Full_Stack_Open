@@ -22,7 +22,7 @@
       //         </div>
       //       )
       //   }
-import { useState } from "react";
+// import { useState } from "react";
       
 // const App = () => {
 //   const [clicks, setClicks] = useState({
@@ -109,89 +109,125 @@ import { useState } from "react";
 
   //Renderizado condicional 
 
-  const History = (props) => { 
-    if (props.allClicks.length === 0) {
-      return (
-        <div>
-          The app is used by pressing the buttons
-        </div>
-      )
-    }
+  // const History = (props) => { 
+  //   if (props.allClicks.length === 0) {
+  //     return (
+  //       <div>
+  //         The app is used by pressing the buttons
+  //       </div>
+  //     )
+  //   }
+  //   return (
+  //     <div>
+  //       Button press history: {props.allClicks.join(' ')}
+  //     </div>
+  //   )
+  // }
+  
+  // const Button = ({ handleClick, text }) => (
+  //   <button onClick={handleClick}>
+  //     {text}
+  //   </button>
+  // )
+
+  // const App = () => {
+  //   const [clicksLeft, setLeft] = useState({left:0})
+  //   const [clicksRight, setRight] = useState({right:0})
+  //   const [allClicks, setAll] = useState([])
+  //   const [total, setTotal] = useState({total:0})
+  
+  //   const handleLeftClick = () => {
+  //     setTotal({...total,
+  //       total: total.total + 1
+  //     })
+  //     setAll(allClicks.concat('L'))
+  //     setLeft({...clicksLeft,
+  //       left: clicksLeft.left + 1})
+  
+  //   }
+  
+    
+  //   const handleRightClick = () => {
+  //     setTotal({...total,
+  //       total: total.total + 1
+  //     })
+  //     setAll(allClicks.concat('R'))
+  //     setRight({...clicksRight,
+  //       right: clicksRight.right + 1})
+  
+  //   }
+
+  //   const handleResetClick = () => {
+  //     setAll([])
+  //     setRight({right:0})
+  //     setLeft({left:0})
+  //     setTotal({total:0})
+  //   }
+  //   return (
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         flexDirection: "column", // Alinea los elementos de arriba hacia abajo
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         height: "100vh", // Ocupa toda la altura de la pantalla
+  //         gap: "10px", // Espacio entre los elementos
+  //       }}
+  //     >
+  //       {/* Este div contiene los botones left y right, y se organizan en una fila */}
+  //       <div
+  //         style={{
+  //           display: "flex", // Alinea los botones y contadores horizontalmente
+  //           gap: "10px", // Espacio entre los botones y contadores
+  //         }}
+  //       >
+  //         <div>{clicksLeft.left}</div>
+  //         <Button handleClick={handleLeftClick} text='Left'>Left</Button>
+  //         <Button handleClick={handleResetClick} text='Reset'>Reset</Button>
+  //         <Button handleClick={handleRightClick} text='Right'>Right</Button>
+  //         <div>{clicksRight.right}</div>
+  //       </div>
+    
+  //       {/* Elementos debajo de los botones */}
+  //       <History  allClicks={allClicks}/>
+  //       <div>total {total.total}</div>
+  //     </div>
+  //   );
+  // }
+  import { useState } from "react";
+
+  const App = () => {
+    const [value, setValue] = useState({number: 10})
+  
+    const handleValue = () => { 
+      setValue({...value,
+        number:0
+      })
+     }
+
+    const handleValueRestart = () => { 
+      setValue({...value,
+        number : 10
+      })
+      console.log(value.number)
+     }
+
+
     return (
-      <div>
-        Button press history: {props.allClicks.join(' ')}
+      <div
+      style={{
+                display: "flex",
+                flexDirection: "column", // Alinea los elementos de arriba hacia abajo
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh", // Ocupa toda la altura de la pantalla
+                gap: "10px", // Espacio entre los elementos
+              }}>
+        <div>{value.number}</div>
+        <button onClick={handleValue}> Reset to zero </button>
+        <button onClick={handleValueRestart}> Restart </button>
       </div>
     )
   }
-  
-  const Button = ({ handleClick, text }) => (
-    <button onClick={handleClick}>
-      {text}
-    </button>
-  )
 
-  const App = () => {
-    const [clicksLeft, setLeft] = useState({left:0})
-    const [clicksRight, setRight] = useState({right:0})
-    const [allClicks, setAll] = useState([])
-    const [total, setTotal] = useState({total:0})
-  
-    const handleLeftClick = () => {
-      setTotal({...total,
-        total: total.total + 1
-      })
-      setAll(allClicks.concat('L'))
-      setLeft({...clicksLeft,
-        left: clicksLeft.left + 1})
-  
-    }
-  
-    
-    const handleRightClick = () => {
-      setTotal({...total,
-        total: total.total + 1
-      })
-      setAll(allClicks.concat('R'))
-      setRight({...clicksRight,
-        right: clicksRight.right + 1})
-  
-    }
-
-    const handleResetClick = () => {
-      setAll([])
-      setRight({right:0})
-      setLeft({left:0})
-      setTotal({total:0})
-    }
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column", // Alinea los elementos de arriba hacia abajo
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh", // Ocupa toda la altura de la pantalla
-          gap: "10px", // Espacio entre los elementos
-        }}
-      >
-        {/* Este div contiene los botones left y right, y se organizan en una fila */}
-        <div
-          style={{
-            display: "flex", // Alinea los botones y contadores horizontalmente
-            gap: "10px", // Espacio entre los botones y contadores
-          }}
-        >
-          <div>{clicksLeft.left}</div>
-          <Button handleClick={handleLeftClick} text='Left'>Left</Button>
-          <Button handleClick={handleResetClick} text='Reset'>Reset</Button>
-          <Button handleClick={handleRightClick} text='Right'>Right</Button>
-          <div>{clicksRight.right}</div>
-        </div>
-    
-        {/* Elementos debajo de los botones */}
-        <History  allClicks={allClicks}/>
-        <div>total {total.total}</div>
-      </div>
-    );
-  }
 export default App;
