@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #145c2c;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,24 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+/* Ajustes para el contenedor de las estadísticas */
+.stats-container {
+  text-align: left; /* Alinea el contenido a la izquierda */
+  width: 100%; /* Asegúrate de que ocupe todo el ancho */
+  padding-left: 30px; /* Añade espacio desde el borde izquierdo */
+}
+
+.stats-container p {
+  margin: 5px 0; /* Ajusta el margen vertical entre los elementos */
+}
+
+/* Contenedor para los botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .App-link {
