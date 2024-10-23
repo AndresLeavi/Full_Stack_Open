@@ -1,0 +1,12 @@
+.center-content {
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Centra verticalmente usando toda la altura de la ventana */
+  text-align: center;
+}
+
+.center-content button {
+  margin-top: 20px; /* Añade un espacio entre el párrafo y el botón */
+}
