@@ -1,5 +1,5 @@
+import './css/styles.css';
 import { useState } from 'react';
-import './css/styles.css'
 
 const App = () => {
   const anecdotes = [
@@ -11,42 +11,68 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
-  ]
-  // Estado para votos: cada anécdota tiene un objeto que almacena los votos
+  ];
+
+  const reactions = ['😊', '❤️', '😂', '😮', '😢', '😡']; // Reacciones posibles
+
   const [votes, setVotes] = useState(
-    anecdotes.map(() => ({ good: 0, neutral: 0, bad: 0 }))
+    anecdotes.map(() => Array(reactions.length).fill(0)) // Inicializa los votos para cada reacción
   );
-  
+
+  const [userReactions, setUserReactions] = useState(
+    anecdotes.map(() => null) // Inicializa el estado de reacciones del usuario
+  );
+
   const [selected, setSelected] = useState(0); // Índice de la anécdota actual
 
-  // Función para avanzar a la siguiente anécdota
   const handleNextAnecdote = () => {
     setSelected((prevSelected) => (prevSelected + 1) % anecdotes.length);
   };
 
-  // Función para mostrar una anécdota aleatoria
+  const handlePrevAnecdote = () => {
+    setSelected((prevSelected) => (prevSelected - 1 + anecdotes.length) % anecdotes.length);
+  };
+
   const handleRandomAnecdote = () => {
     const randomIndex = Math.floor(Math.random() * anecdotes.length);
     setSelected(randomIndex);
   };
 
-  // Función para votar por la anécdota actual
-  const handleVote = (type) => {
+  const handleVote = (reactionIndex) => {
+    const currentReaction = userReactions[selected]; // Reacción actual del usuario
+
     const updatedVotes = [...votes]; // Copia el array de votos
-    updatedVotes[selected][type] += 1; // Incrementa el voto según el tipo
+
+    // Si el usuario ya reaccionó, resta el voto anterior
+    if (currentReaction !== null) {
+      updatedVotes[selected][currentReaction] -= 1; // Resta el voto anterior
+    }
+
+    updatedVotes[selected][reactionIndex] += 1; // Incrementa el nuevo voto
     setVotes(updatedVotes); // Actualiza el estado de votos
+
+    const updatedUserReactions = [...userReactions]; // Copia el estado de reacciones del usuario
+    updatedUserReactions[selected] = reactionIndex; // Actualiza la reacción del usuario
+    setUserReactions(updatedUserReactions); // Actualiza el estado de userReactions
   };
 
   return (
     <div className="center-content">
-      <p>{anecdotes[selected]}</p>
-      <p>Good: {votes[selected].good}</p>
-      <p>Neutral: {votes[selected].neutral}</p>
-      <p>Bad: {votes[selected].bad}</p>
+      <div className="anecdote">
+        <p>{anecdotes[selected]}</p>
+      </div>
+      <div>
+        {reactions.map((reaction, index) => (
+          <span key={index} style={{ marginRight: '10px', cursor: 'pointer' }}>
+            <button onClick={() => handleVote(index)} style={{ fontSize: '24px', border: 'none', background: 'none' }}>
+              {reaction}
+            </button>
+            <span>{votes[selected][index]}</span>
+          </span>
+        ))}
+      </div>
       <div style={{ marginTop: '20px' }}>
-        <button onClick={() => handleVote('good')}>Good</button>
-        <button onClick={() => handleVote('neutral')} style={{ marginLeft: '10px' }}>Neutral</button>
-        <button onClick={() => handleVote('bad')} style={{ marginLeft: '10px' }}>Bad</button>
+        <button onClick={handlePrevAnecdote} style={{ marginLeft: '10px' }}>Prev Anecdote</button>
         <button onClick={handleNextAnecdote} style={{ marginLeft: '10px' }}>Next Anecdote</button>
         <button onClick={handleRandomAnecdote} style={{ marginLeft: '10px' }}>Random Anecdote</button>
       </div>

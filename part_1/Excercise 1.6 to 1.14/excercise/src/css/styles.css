@@ -1,3 +1,17 @@
+.anecdote {
+  max-width: 400px; /* Ancho máximo del contenedor */
+  min-height: 100px; /* Altura mínima para que el contenedor no sea demasiado pequeño */
+  overflow-wrap: break-word; /* Permite que las palabras se dividan si son demasiado largas */
+  margin: 0 auto; /* Centra el contenedor en su padre */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde opcional */
+  border-radius: 5px; /* Bordes redondeados opcionales */
+  display: flex; /* Flexbox para centrar el contenido */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+}
+
+
 .center-content {
   display: flex;
   flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
